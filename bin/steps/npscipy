@@ -8,6 +8,7 @@
 # adapter between a Python application and Heroku's runtime.
 #
 # This script is invoked by [`bin/compile`](/).
+PYTHON_SITE_PACKAGES = "python/lib/python2.7/site-packages"
 VENDORED_GIT_NAME="npscipy-binaries"
 VENDORED_GIT_REPO="git://github.com/Terepac/${VENDORED_GIT_NAME}.git"
 # The location of the pre-compiled atlas/lapack/blas/gfortran binaries.
@@ -16,6 +17,9 @@ VENDORED_BINARIES="npscipy"
 VENDORED_NUMPY="numpy-1.6.1"
 # the location of the bdist of scipy
 VENDORED_SCIPY="scipy-0.10.1"
+
+
+
 
 # If numpy or scipy exists within requirements.txt then use binaries.
 if (grep -iq -e "#numpy" -e "#scipy" requirements.txt) then
@@ -35,7 +39,7 @@ if (grep -iq -e "#numpy" -e "#scipy" requirements.txt) then
     
     
     echo "-----> heroku binaries contents: $(ls ${VENDORED_GIT_NAME})"
-    tar -xvf ${VENDORED_GIT_NAME}/${VENDORED_BINARIES}.tar.gz > /dev/null
+    tar -xvf ${VENDORED_GIT_NAME}/${VENDORED_BINARIES}.tar.gz -C ${PYTHON_SITE_PACKAGES} >  /dev/null
   fi
   export BLAS=$(pwd)/vendor/lib/atlas-base/atlas/libblas.a
   export LAPACK=$(pwd)/vendor/lib/atlas-base/atlas/liblapack.a
@@ -46,18 +50,18 @@ if (grep -iq -e "#numpy" -e "#scipy" requirements.txt) then
   echo "current user: $(whoami)"
   echo "printenv: $(printenv)"
   
-  if [ -d "venv/lib/python2.7/site-packages/numpy" ]; then
+  if [ -d "python/lib/python2.7/site-packages/numpy" ]; then
     echo "-----> Using cached numpy."
   else
     echo "-----> Creating/downloading numpy bdist."
-    tar -xvf ${VENDORED_GIT_NAME}/${VENDORED_NUMPY}.tar.gz > /dev/null
+    tar -xvf ${VENDORED_GIT_NAME}/${VENDORED_NUMPY}.tar.gz -C ${PYTHON_SITE_PACKAGES} >  /dev/null
   fi
   
-  if [ -d "venv/lib/python2.7/site-packages/scipy" ]; then
+  if [ -d "python/lib/python2.7/site-packages/scipy" ]; then
     echo "-----> Using cached scipy."
   else
     echo "-----> Creating/downloading scipy bdist."
-    tar -xvf ${VENDORED_GIT_NAME}/${VENDORED_SCIPY}.tar.gz > /dev/null
+    tar -xvf ${VENDORED_GIT_NAME}/${VENDORED_SCIPY}.tar.gz -C ${PYTHON_SITE_PACKAGES} >  /dev/null
   fi
   
   if [ -d ${VENDORED_GIT_NAME} ]; then

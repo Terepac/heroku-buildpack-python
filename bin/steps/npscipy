@@ -21,7 +21,9 @@ VENDORED_SCIPY="scipy-0.10.1"
 if (grep -iq -e "#numpy" -e "#scipy" requirements.txt) then
   echo "-----> Noticed numpy/scipy. Bootstrapping prebuilt binaries."
   cd .heroku
+  
   echo "-----> heroku contents: $(ls)"
+  echo "-----> pwd: $(pwd)"
 
   ## check whether this has happened already
   ## set BLAS/LAPACK/ATLAS
@@ -48,7 +50,7 @@ if (grep -iq -e "#numpy" -e "#scipy" requirements.txt) then
     tar -xvf ${VENDORED_GIT_NAME}/${VENDORED_NUMPY}.tar.gz
   fi
   
-  if [ -d "venv/lib/python2.7/site-packages/numpy" ]; then
+  if [ -d "venv/lib/python2.7/site-packages/scipy" ]; then
     echo "-----> Using cached scipy."
   else
     echo "-----> Creating/downloading scipy bdist."

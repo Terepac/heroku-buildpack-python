@@ -54,14 +54,14 @@ if (grep -iq -e "#numpy" -e "#scipy" requirements.txt) then
     echo "-----> Using cached numpy."
   else
     echo "-----> Creating/downloading numpy bdist."
-    tar -xvf ${VENDORED_GIT_NAME}/${VENDORED_NUMPY}.tar.gz -C ${PYTHON_SITE_PACKAGES} 
+    tar -xvf ${PYTHON_SITE_PACKAGES} ${VENDORED_GIT_NAME}/${VENDORED_NUMPY}.tar.gz  
   fi
   
   if [ -d "python/lib/python2.7/site-packages/scipy" ]; then
     echo "-----> Using cached scipy."
   else
     echo "-----> Creating/downloading scipy bdist."
-    tar -xvf ${VENDORED_GIT_NAME}/${VENDORED_SCIPY}.tar.gz -C ${PYTHON_SITE_PACKAGES} 
+    tar -xvf ${PYTHON_SITE_PACKAGES}  ${VENDORED_GIT_NAME}/${VENDORED_SCIPY}.tar.gz 
   fi
   
   if [ -d ${VENDORED_GIT_NAME} ]; then

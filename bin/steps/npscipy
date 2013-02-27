@@ -41,14 +41,14 @@ if (grep -iq -e "#numpy" -e "#scipy" requirements.txt) then
   export LIBRARY_PATH=$(pwd)/vendor/lib:$(pwd)/lib/atlas-base:$(pwd)/lib/atlas-base/atlas
   export LD_LIBRARY_PATH=$(pwd)/vendor/lib:$(pwd)/lib/atlas-base:$(pwd)/lib/atlas-base/atlas
 
-  if [ -d "~/.heroku/venv/lib/python2.7/site-packages/numpy" ]; then
+  if [ -d "~venv/lib/python2.7/site-packages/numpy" ]; then
     echo "-----> Using cached numpy."
   else
     echo "-----> Creating/downloading numpy bdist."
     tar -xvf ${VENDORED_GIT_NAME}/${VENDORED_NUMPY}.tar.gz
   fi
   
-  if [ -d "~/.heroku/venv/lib/python2.7/site-packages/numpy" ]; then
+  if [ -d "venv/lib/python2.7/site-packages/numpy" ]; then
     echo "-----> Using cached scipy."
   else
     echo "-----> Creating/downloading scipy bdist."

@@ -147,6 +147,9 @@ set -e
 # See [`bin/steps/pylibmc`](pylibmc.html).
 source $BIN_DIR/steps/pylibmc
 
+#Scipy/Numpy Support
+source $BIN_DIR/steps/npscipy
+
 # Install Mercurial if it appears to be required.
 if (grep -Fiq "hg+" requirements.txt) then
   pip install --use-mirrors mercurial | cleanup | indent

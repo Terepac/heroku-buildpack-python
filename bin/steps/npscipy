@@ -35,7 +35,7 @@ if (grep -iq -e "#numpy" -e "#scipy" requirements.txt) then
     
     
     echo "-----> heroku binaries contents: $(ls ${VENDORED_GIT_NAME})"
-    tar -xvf ${VENDORED_GIT_NAME}/${VENDORED_BINARIES}.tar.gz
+    tar -xvf ${VENDORED_GIT_NAME}/${VENDORED_BINARIES}.tar.gz > /dev/null
   fi
   export BLAS=$(pwd)/vendor/lib/atlas-base/atlas/libblas.a
   export LAPACK=$(pwd)/vendor/lib/atlas-base/atlas/liblapack.a
@@ -50,14 +50,14 @@ if (grep -iq -e "#numpy" -e "#scipy" requirements.txt) then
     echo "-----> Using cached numpy."
   else
     echo "-----> Creating/downloading numpy bdist."
-    tar -xvf ${VENDORED_GIT_NAME}/${VENDORED_NUMPY}.tar.gz
+    tar -xvf ${VENDORED_GIT_NAME}/${VENDORED_NUMPY}.tar.gz > /dev/null
   fi
   
   if [ -d "venv/lib/python2.7/site-packages/scipy" ]; then
     echo "-----> Using cached scipy."
   else
     echo "-----> Creating/downloading scipy bdist."
-    tar -xvf ${VENDORED_GIT_NAME}/${VENDORED_SCIPY}.tar.gz
+    tar -xvf ${VENDORED_GIT_NAME}/${VENDORED_SCIPY}.tar.gz > /dev/null
   fi
   
   if [ -d ${VENDORED_GIT_NAME} ]; then

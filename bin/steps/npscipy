@@ -22,8 +22,7 @@ if (grep -iq -e "#numpy" -e "#scipy" requirements.txt) then
   echo "-----> Noticed numpy/scipy. Bootstrapping prebuilt binaries."
   cd .heroku
   
-  echo "-----> heroku contents: $(ls)"
-  echo "-----> pwd: $(pwd)"
+
 
   ## check whether this has happened already
   ## set BLAS/LAPACK/ATLAS
@@ -42,6 +41,13 @@ if (grep -iq -e "#numpy" -e "#scipy" requirements.txt) then
   export ATLAS=$(pwd)/vendor/lib/atlas-base/libatlas.a
   export LIBRARY_PATH=$(pwd)/vendor/lib:$(pwd)/lib/atlas-base:$(pwd)/lib/atlas-base/atlas
   export LD_LIBRARY_PATH=$(pwd)/vendor/lib:$(pwd)/lib/atlas-base:$(pwd)/lib/atlas-base/atlas
+
+  echo "-----> heroku contents: $(ls)"
+  echo "-----> pwd: $(pwd)"
+  cd venv
+  echo "-----> pwd: $(pwd)"
+  cd lib/python2.7/site-packages/numpy
+  echo "-----> pwd: $(pwd)"
 
   if [ -d "venv/lib/python2.7/site-packages/numpy" ]; then
     echo "-----> Using cached numpy."

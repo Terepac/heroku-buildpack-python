@@ -9,7 +9,7 @@
 #
 # This script is invoked by [`bin/compile`](/).
 PYTHON_SITE_PACKAGES="/app/.heroku/python/lib/python2.7/site-packages"
-VENV_SITE_PACHAGES = "/app/.heroku/venv/lib/python2.7/site-packages"
+VENV_SITE_PACKAGES="/app/.heroku/venv/lib/python2.7/site-packages"
 VENDORED_GIT_NAME="npscipy-binaries"
 VENDORED_GIT_REPO="git://github.com/Terepac/${VENDORED_GIT_NAME}.git"
 # The location of the pre-compiled atlas/lapack/blas/gfortran binaries.
@@ -56,7 +56,7 @@ if (grep -iq -e "#numpy" -e "#scipy" requirements.txt) then
   else
     echo "-----> Creating/downloading numpy bdist."
     tar -xvf ${VENDORED_GIT_NAME}/${VENDORED_NUMPY}.tar.gz  > /dev/null
-    mv -i --reply=no ${VENV_SITE_PACHAGES}/* ${PYTHON_SITE_PACKAGES}
+    mv -i --reply=no ${VENV_SITE_PACKAGES}/* ${PYTHON_SITE_PACKAGES}
     if [ -d "${PYTHON_SITE_PACKAGES}/numpy" ]; then
       echo "Numpy success"
     fi
@@ -67,7 +67,7 @@ if (grep -iq -e "#numpy" -e "#scipy" requirements.txt) then
   else
     echo "-----> Creating/downloading scipy bdist."
     tar -xvf  ${VENDORED_GIT_NAME}/${VENDORED_SCIPY}.tar.gz > /dev/null
-    mv -i --reply=no ${VENV_SITE_PACHAGES}/* ${PYTHON_SITE_PACKAGES} 
+    mv -i --reply=no ${VENV_SITE_PACKAGES}/* ${PYTHON_SITE_PACKAGES} 
     if [ -d "${PYTHON_SITE_PACKAGES}/scipy" ]; then
       echo "Numpy success"
     fi

@@ -58,7 +58,7 @@ export PYTHONUNBUFFERED=1
 export LANG=en_US.UTF-8
 export LIBRARY_PATH=/app/.heroku/vendor/lib
 export LD_LIBRARY_PATH=/app/.heroku/vendor/lib
-export BLAS=.heroku/vendor/lib/libfblas.a
+
 
 # Switch to the repo's context.
 cd $BUILD_DIR

@@ -8,7 +8,7 @@
 # adapter between a Python application and Heroku's runtime.
 #
 # This script is invoked by [`bin/compile`](/).
-PYTHON_SITE_PACKAGES = "python/lib/python2.7/site-packages"
+PYTHON_SITE_PACKAGES="python/lib/python2.7/site-packages"
 VENDORED_GIT_NAME="npscipy-binaries"
 VENDORED_GIT_REPO="git://github.com/Terepac/${VENDORED_GIT_NAME}.git"
 # The location of the pre-compiled atlas/lapack/blas/gfortran binaries.

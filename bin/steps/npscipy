@@ -26,8 +26,6 @@ if (grep -iq -e "#numpy" -e "#scipy" requirements.txt) then
   ## check whether this has happened already
   ## set BLAS/LAPACK/ATLAS
   if [ -d "vendor/lib/atlas-base" ]; then
-    cd vendor/lib/atlas-base
-    echo "----> vendor? = $(pwd)"
     echo "-----> Using cached binaries."
   else
     echo "-----> Creating/downloading binaries."

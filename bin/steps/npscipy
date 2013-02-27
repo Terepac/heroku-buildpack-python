@@ -55,8 +55,8 @@ if (grep -iq -e "#numpy" -e "#scipy" requirements.txt) then
     echo "-----> Using cached numpy."
   else
     echo "-----> Creating/downloading numpy bdist."
-    # tar -xvf ${VENDORED_GIT_NAME}/${VENDORED_NUMPY}.tar.gz  > /dev/null
-    pip install --verbose ${VENDORED_GIT_NAME}/${VENDORED_NUMPY}.tar.gz
+    tar -xvf ${VENDORED_GIT_NAME}/${VENDORED_NUMPY}.tar.gz  > /dev/null
+    mv ${VENV_SITE_PACHAGES}/* ${PYTHON_SITE_PACKAGES}
     if [ -d "${PYTHON_SITE_PACKAGES}/numpy" ]; then
       echo "Numpy success"
     fi
@@ -66,8 +66,8 @@ if (grep -iq -e "#numpy" -e "#scipy" requirements.txt) then
     echo "-----> Using cached scipy."
   else
     echo "-----> Creating/downloading scipy bdist."
-    # tar -xvf  ${VENDORED_GIT_NAME}/${VENDORED_SCIPY}.tar.gz > /dev/null
-    pip install --verbose ${VENDORED_GIT_NAME}/${VENDORED_NUMPY}.tar.gz
+    tar -xvf  ${VENDORED_GIT_NAME}/${VENDORED_SCIPY}.tar.gz > /dev/null
+    mv ${VENV_SITE_PACHAGES}/* ${PYTHON_SITE_PACKAGES} 
     if [ -d "${PYTHON_SITE_PACKAGES}/scipy" ]; then
       echo "Numpy success"
     fi

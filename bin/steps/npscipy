@@ -29,7 +29,7 @@ if (grep -iq -e "numpy" -e "scipy" requirements.txt) then
   
   # Only if we don't have everything already installed.
   if [ -d "vendor/lib/atlas-base" ] && [ -d "${PYTHON_SITE_PACKAGES}/numpy" ] && [ -d "${PYTHON_SITE_PACKAGES}/scipy" ]; then
-    echo "----->Already Installed."
+    echo "-----> Numpy and Scipy are already Installed."
   else
     git clone ${VENDORED_GIT_REPO}
   fi
